@@ -45,8 +45,6 @@ train_loader = DataLoader(train_set, batch_size=16, shuffle=True)
 val_loader = DataLoader(val_set, batch_size=16, shuffle=False)
 
 # 使用预训练模型ResNet50
-
-
 model = models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V1)
 # 替换
 model.conv1 = nn.Conv2d(
