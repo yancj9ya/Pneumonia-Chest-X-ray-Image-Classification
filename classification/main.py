@@ -91,4 +91,11 @@ if __name__ == "__main__":
         # 保存模型
         if val_acc > best_acc or epoch == num_epochs - 1:
             best_acc = val_acc
-            torch.save(model.state_dict(), f"best_model_epoch_{epoch}.pth")
+            save_point = {
+                "epoch": epoch,
+                "model_state_dict": model.state_dict(),
+                "optimizer_state_dict": optimizer.state_dict(),
+                "scheduler_state_dict": scheduler.state_dict(),
+                "best_acc": best_acc,
+            }
+            torch.save(save_point, f"best_model_epoch_{epoch}.pth")
